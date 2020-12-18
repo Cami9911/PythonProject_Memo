@@ -7,18 +7,16 @@
     <form class="d-flex flex-row h-50 mt-4" method="POST">
         {% csrf_token %}
         <div class="input-group mb-3">
-            <input class="form-control" type="search" placeholder="Add Item" aria-label="Search" name="item">
-            <button class="btn btn-outline-light ms-2" type="submit">Add To List</button>
+            <input class="form-control alert-success rounded" type="text" placeholder="Add item . . ." aria-label="item" name="item">
+            <button class="btn btn-outline-light ms-2 rounded" type="submit">Add To List</button>
         </div>
     </form>
     <br/>
     {% if messages %}
     {% for message in messages %}
-        <div class="alert alert-warning alert-dismissible" role="alert">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
             {{ message }}
-            <button class="close" data-dismiss="alert">
-                <small><sup>x</sup></small>
-            </button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endfor%}
 
@@ -29,15 +27,15 @@
     {% for things in all_items %}
         {% if things.completed %}
             <tr>
-                <td class="striker"><a class="link-success" href="{% url 'edit' things.id %}">{{ things.item }}</a></td>
-                <td style="height: 2%"><center><a class="link-success" href="{% url 'markAsIncomplete' things.id %}"><i class="fa fa-check"></a></center></td>
-                <td><center><a class="link-danger" href="{% url 'delete' things.id %}"><i class="fa fa-trash" ></i></a></center></td>
+                <td class="striker"><a class="link-success" href="{% url 'edit' things.id %}" data-bs-toggle="tooltip" title="Edit item">{{ things.item }}</a></td>
+                <td style="height: 2%"><center><a class="link-success" href="{% url 'markAsIncomplete' things.id %}" data-bs-toggle="tooltip" title="Mark item as incomplete"><i class="fa fa-check"></a></center></td>
+                <td><center><a class="link-danger" href="{% url 'deleteItem' things.id %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Delete item from memo list"><i class="fa fa-trash" ></i></a></center></td>
             </tr>
         {% else %}
             <tr>
-                <td><a class="link-light" href="{% url 'edit' things.id %}">{{ things.item }}</a></td>
-                <td><center><a class="link-light" href="{% url 'markAsComplete' things.id %}">Done</i></a></center></td>
-                <td><center><a class="link-danger" href="{% url 'delete' things.id %}"><i class="fa fa-trash" ></a></center></td>
+                <td><a class="link-light" href="{% url 'edit' things.id %}" data-bs-toggle="tooltip" title="Edit item">{{ things.item }}</a></td>
+                <td><center><a class="link-light" href="{% url 'markAsComplete' things.id %}" data-bs-toggle="tooltip" title="Mark item as done">Done</i></a></center></td>
+                <td><center><a class="link-danger" href="{% url 'deleteItem' things.id %}" data-bs-toggle="tooltip" title="Delete item from memo list"><i class="fa fa-trash" ></a></center></td>
             </tr>
         {% endif %}
     {% endfor %}
