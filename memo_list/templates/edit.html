@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if item %}
+    <div class="container mt-5 bg-dark p-5 rounded">
+        <form class="d-flex flex-row" method="POST">
+              {% csrf_token %}
+            <div class="input-group mb-3">
+                <input class="form-control" type="search" placeholder="{{ item.item }}" value="{{ item.item }}" aria-label="Search" name="item">
+                <input type="hidden" value="{{ item.completed }}" name="completed">
+                <button class="btn btn-outline-light ms-2" type="submit">Edit item</button>
+            </div>
+        </form>
+    </div>
+    {% endif %}
+
+{% endblock %}
