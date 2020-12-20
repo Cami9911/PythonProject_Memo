@@ -22,7 +22,7 @@ def deleteItem(request, list_id):
     messages.success(request, ('Item has been deleted from memo list'))
     return redirect('addItem')
 
-def edit(request, list_id):
+def editItem(request, list_id):
     if request.method == 'POST':
         item = List.objects.get(pk=list_id)
 
