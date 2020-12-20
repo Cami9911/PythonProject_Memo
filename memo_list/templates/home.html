@@ -25,18 +25,18 @@
 
         {% if all_items %}
             <table class="table table-dark table-responsive-sm">
-            {% for things in all_items %}
-                {% if things.completed %}
+            {% for item in all_items %}
+                {% if item.completed %}
                     <tr>
-                        <td class="striker"><a class="link-success" href="{% url 'editItem' things.id %}" data-bs-toggle="tooltip" title="Edit item">{{ things.item }}</a></td>
-                        <td style="height: 2%"><center><a class="link-success" href="{% url 'markAsIncomplete' things.id %}" data-bs-toggle="tooltip" title="Mark item as incomplete"><i class="fa fa-check"></a></center></td>
-                        <td><center><a class="link-danger" href="{% url 'deleteItem' things.id %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Delete item from memo list"><i class="fa fa-trash" ></i></a></center></td>
+                        <td class="striker"><a class="link-success" href="{% url 'editItem' item.id %}" data-bs-toggle="tooltip" title="Edit item">{{ item.item }}</a></td>
+                        <td style="height: 2%"><center><a class="link-success" href="{% url 'markAsIncomplete' item.id %}" data-bs-toggle="tooltip" title="Mark item as incomplete"><i class="fa fa-check"></a></center></td>
+                        <td><center><a class="link-danger" href="{% url 'deleteItem' item.id %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Delete item from memo list"><i class="fa fa-trash" ></i></a></center></td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td><a class="link-light" href="{% url 'editItem' things.id %}" data-bs-toggle="tooltip" title="Edit item">{{ things.item }}</a></td>
-                        <td><center><a class="link-light" href="{% url 'markAsComplete' things.id %}" data-bs-toggle="tooltip" title="Mark item as done">Done</i></a></center></td>
-                        <td><center><a class="link-danger" href="{% url 'deleteItem' things.id %}" data-bs-toggle="tooltip" title="Delete item from memo list"><i class="fa fa-trash" ></a></center></td>
+                        <td><a class="link-light" href="{% url 'editItem' item.id %}" data-bs-toggle="tooltip" title="Edit item">{{ item.item }}</a></td>
+                        <td><center><a class="link-light" href="{% url 'markAsComplete' item.id %}" data-bs-toggle="tooltip" title="Mark item as done">Done</i></a></center></td>
+                        <td><center><a class="link-danger" href="{% url 'deleteItem' item.id %}" data-bs-toggle="tooltip" title="Delete item from memo list"><i class="fa fa-trash" ></a></center></td>
                     </tr>
                 {% endif %}
             {% endfor %}
