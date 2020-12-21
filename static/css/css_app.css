@@ -2,9 +2,28 @@
     text-decoration: line-through;
 }
 .black_bg{
-    background-color: rgb(29, 29, 29);
+    background-color: #94C67C;
   }
 
  .font-size{
     font-size: 12px;
  }
+
+  .scrollArea::-webkit-scrollbar {
+    width: 5px;
+    background-color: #F5F5F5;
+ }
+
+  .scrollArea::-webkit-scrollbar-track {
+      background-color: #CCCCCC;
+  }
+
+  .scrollArea::-webkit-scrollbar-thumb {
+      background-image: linear-gradient(white, black);
+  }
+
+  .scrollArea{
+    overflow-y: scroll;
+    height:600px;
+    margin-bottom: 10px;
+  }

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container col-sm-8 mt-5 bg-dark p-5 rounded">
+    <div class="container col-sm-8 mt-5 bg-dark p-5 rounded overflow-auto">
         <p class="text-center text-white fs-2">Memo</p>
 
         <form class="d-flex flex-row h-50 mt-4" method="POST">
@@ -23,6 +23,7 @@
             {% endfor%}
         {% endif %}
 
+        <div class="scrollArea">
         {% if all_items %}
             <table class="table table-dark table-responsive-sm">
             {% for item in all_items %}
@@ -44,6 +45,7 @@
             {% endfor %}
             </table>
         {% endif %}
+        </div>
     </div>
 
 {% endblock %}
