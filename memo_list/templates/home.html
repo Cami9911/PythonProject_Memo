@@ -31,7 +31,7 @@
                     <tr>
                         <td class="done"><a class="link-success" href="{% url 'editItem' item.id %}" data-bs-toggle="tooltip" title="Edit item">{{ item.item }}</a>
                             <p class="font-size ms-2 mb-1 text-white-50">{{item.date_posted|date:"F d, Y"}}</p></td>
-                        <td style="height: 2%"><center><a class="link-success" href="{% url 'markAsIncomplete' item.id %}" data-bs-toggle="tooltip" title="You've changed your mind? Mark item as incomplete!"><i class="fa fa-check"></i></a></center></td>
+                        <td style="height: 2%"><center><a class="link-success" href="{% url 'markAsIncomplete' item.id %}" data-bs-toggle="tooltip" title="Have you changed your mind? Mark item as incomplete!"><i class="fa fa-check"></i></a></center></td>
                         <td><center><a class="link-danger" href="{% url 'deleteItem' item.id %}" data-bs-toggle="tooltip" data-bs-placement="right" title="No more item needed? Delete it from list!"><i class="fa fa-trash" ></i></a></center></td>
                     </tr>
                 {% else %}
