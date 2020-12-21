@@ -7,5 +7,6 @@ urlpatterns = [
     path('editItem/<list_id>', views.editItem, name="editItem"),
     path('markAsComplete/<list_id>', views.markAsComplete, name="markAsComplete"),
     path('markAsIncomplete/<list_id>', views.markAsIncomplete, name="markAsIncomplete"),
+    path('about/', views.aboutPage, name="aboutPage"),
 
 ]

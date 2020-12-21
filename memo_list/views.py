@@ -16,6 +16,9 @@ def addItem(request):
         all_items = List.objects.all
         return render(request, 'home.html', {'all_items': all_items})
 
+def aboutPage(request):
+    return render(request, 'about.html')
+
 def deleteItem(request, list_id):
     item = List.objects.get(pk=list_id)
     item.delete()
@@ -47,4 +50,3 @@ def markAsIncomplete(request, list_id):
     item.completed = False
     item.save()
     return redirect('addItem')
-

@@ -2,15 +2,17 @@
 
 {% block content %}
     {% if item %}
-    <div class="container mt-5 bg-dark p-5 rounded">
+    <div class="container col-sm-8 mt-5 bg-dark p-5 rounded">
+        <p class="text-center text-light fs-4">Edit item</p>
         <form class="d-flex flex-row" method="POST">
               {% csrf_token %}
             <div class="input-group mb-3">
                 <input class="form-control alert-success" type="text" placeholder="{{ item.item }}" value="{{ item.item }}" aria-label="item" name="item">
                 <input type="hidden" value="{{ item.completed }}" name="completed">
-                <button class="btn btn-outline-light ms-2" type="submit">Edit item</button>
+                <button class="btn btn-outline-light ms-2" type="submit">Edit</button>
             </div>
         </form>
+        <button class="btn btn-outline-light ms-2 rounded mt-4" type="submit"><a class="link-light" href="{% url 'addItem' %}" >Back</a></button>
     </div>
     {% endif %}
 
