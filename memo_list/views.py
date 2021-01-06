@@ -5,48 +5,48 @@ from django.contrib import messages
 
 def addItem(request):
     if request.method == 'POST':
-        form = ListForm(request.POST or None)
+        form_items = ListForm(request.POST or None)
 
-        if form.is_valid():
-            form.save()
-            all_items = List.objects.all
+        if form_items.is_valid():
+            form_items.save()
+            allItems_list = List.objects.all
             messages.success(request,('Item has been added to memo list!'))
-            return render(request, 'home.html', {'all_items': all_items})
+            return render(request, 'home.html', {'allItems_list': allItems_list})
     else:
-        all_items = List.objects.all
-        return render(request, 'home.html', {'all_items': all_items})
+        allItems_list = List.objects.all
+        return render(request, 'home.html', {'allItems_list': allItems_list})
 
 def aboutPage(request):
     return render(request, 'about.html')
 
-def deleteItem(request, list_id):
-    item = List.objects.get(pk=list_id)
-    item.delete()
+def deleteItem(request, id_item):
+    item_del = List.objects.get(pk=id_item)
+    item_del.delete()
     messages.success(request, ('Item has been deleted from memo list'))
     return redirect('addItem')
 
-def editItem(request, list_id):
+def editItem(request, id_item):
     if request.method == 'POST':
-        item = List.objects.get(pk=list_id)
+        item_edit = List.objects.get(pk=id_item)
 
-        form = ListForm(request.POST or None, instance=item)
+        form_items = ListForm(request.POST or None, instance=item_edit)
 
-        if form.is_valid():
-            form.save()
+        if form_items.is_valid():
+            form_items.save()
             messages.success(request, ('Item has been edited'))
             return redirect('addItem')
     else:
-        item = List.objects.get(pk=list_id)
-        return render(request, 'edit.html', {'item': item})
+        item_edit = List.objects.get(pk=id_item)
+        return render(request, 'edit.html', {'item': item_edit})
 
-def markAsComplete(request, list_id):
-    item = List.objects.get(pk=list_id)
-    item.completed = True
-    item.save()
+def markAsComplete(request, id_item):
+    item_done = List.objects.get(pk=id_item)
+    item_done.completed = True
+    item_done.save()
     return redirect('addItem')
 
-def markAsIncomplete(request, list_id):
-    item = List.objects.get(pk=list_id)
-    item.completed = False
-    item.save()
+def markAsIncomplete(request, id_item):
+    item_undone = List.objects.get(pk=id_item)
+    item_undone.completed = False
+    item_undone.save()
     return redirect('addItem')

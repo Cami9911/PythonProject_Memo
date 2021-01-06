@@ -24,9 +24,9 @@
         {% endif %}
 
         <div class="scrollArea">
-        {% if all_items %}
+        {% if allItems_list %}
             <table class="table table-dark table-responsive-sm">
-            {% for item in all_items %}
+            {% for item in allItems_list %}
                 {% if item.completed %}
                     <tr>
                         <td class="done"><a class="link-success" href="{% url 'editItem' item.id %}" data-bs-toggle="tooltip" title="Wrong item? Edit it!">{{ item.item }}</a>
